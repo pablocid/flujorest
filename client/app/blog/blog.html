@@ -1,0 +1,10 @@
+<div class="col-md-12">
+  <ul>
+    <li ng-repeat="item in BlogCtrl.query">{{item}} <button ng-click="BlogCtrl.borrar({id:item._id})">x</button></li>
+  </ul>
+
+  <button ng-click="BlogCtrl.salvar()">Save</button>
+
+  <span>{{BlogCtrl.nuevo}}</span>
+  <form-schema schema="BlogCtrl.schema" model="BlogCtrl.nuevo"></form-schema>
+</div>
