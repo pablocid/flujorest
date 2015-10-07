@@ -105,7 +105,8 @@ module.exports = function (grunt) {
         ],
         options: {
           livereload: true
-        }
+        },
+        tasks: ['ngDocs:all']
       },
       express: {
         files: [
@@ -596,6 +597,7 @@ module.exports = function (grunt) {
       'express:dev',
       'wait',
       'open',
+      'ngDocs:all',
       'watch'
     ]);
   });

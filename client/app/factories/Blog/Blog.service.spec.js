@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Service: Blog', function () {
-
+/*
   // load the service's module
   beforeEach(module('flujorestApp'));
 
@@ -13,6 +13,6 @@ describe('Service: Blog', function () {
 
   it('should do something', function () {
     expect(!!Blog).toBe(true);
-  });
+  });*/
 
 });

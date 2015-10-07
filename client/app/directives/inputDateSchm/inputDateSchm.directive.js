@@ -10,7 +10,7 @@ angular.module('flujorestApp')
       },
       link: function (scope, element, attrs) {
         function setInput(){
-          var label = element.find("label");
+          var label = element.find('label');
 
           if(scope.schema.labelText){
             label.text(scope.schema.labelText);
@@ -18,15 +18,16 @@ angular.module('flujorestApp')
             label.text(scope.schema.path);
           }
 
-          var input = element.find("input");
+          var input = element.find('input');
           var inputName = scope.schema.path;
-          input.attr("name",inputName);
-          input.attr("ng-model",attrs.model);
+          input.attr('name',inputName);
+          input.attr('ng-model',attrs.model);
+          input.attr('type','text');
 
           var p = element.find('p');
           if(scope.schema.isRequired && attrs.for){
-            input.attr("required",true);
-            p.attr("ng-show",attrs.for+"."+inputName+".$invalid && !"+attrs.for+"."+inputName+".$pristine");
+            input.attr('required',true);
+            p.attr('ng-show',attrs.for+'.'+inputName+'.$invalid && !'+attrs.for+'.'+inputName+'.$pristine');
             if(scope.schema.requiredText){
               p.text(scope.schema.requiredText);
             }

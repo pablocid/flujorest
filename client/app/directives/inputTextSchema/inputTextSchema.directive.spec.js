@@ -2,7 +2,7 @@
 
 describe('Directive: inputTextSchema', function () {
 
-  // load the directive's module and view
+/*  // load the directive's module and view
   beforeEach(module('flujorestApp'));
   beforeEach(module('app/directives/inputTextSchema/inputTextSchema.html'));
 
@@ -17,5 +17,5 @@ describe('Directive: inputTextSchema', function () {
     element = $compile(element)(scope);
     scope.$apply();
     expect(element.text()).toBe('this is the inputTextSchema directive');
-  }));
+  }));*/
 });

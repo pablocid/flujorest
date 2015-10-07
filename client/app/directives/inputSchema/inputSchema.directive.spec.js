@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: inputSchema', function () {
-
+/*
   // load the directive's module and view
   beforeEach(module('flujorestApp'));
   beforeEach(module('app/directives/inputSchema/inputSchema.html'));
@@ -17,5 +17,5 @@ describe('Directive: inputSchema', function () {
     element = $compile(element)(scope);
     scope.$apply();
     expect(element.text()).toBe('this is the inputSchema directive');
-  }));
+  }));*/
 });

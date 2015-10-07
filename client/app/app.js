@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name flujorestApp
+ * @description Esta es una aplicación para crear una solución integral en cuanto al mantenimiento de bases de datos se trata.
+ * Las tecnologías a utilizar en base de datos es MongoDB
+ */
+
 angular.module('flujorestApp', [
   'ngCookies',
   'ngResource',

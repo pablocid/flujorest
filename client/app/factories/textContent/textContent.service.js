@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('flujorestApp')
-  .factory('Blog', function ($resource) {
+  .factory('TextContent', function ($resource) {
 
     return $resource(
-      '/api/blogs/:id',
+      '/api/text-content/:id',
       {id: '@_id'},
       {
         schema:{

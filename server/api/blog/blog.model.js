@@ -11,15 +11,20 @@ var PropsSchema = new Schema({
   content:String,
   active: Boolean
 });
+var loloSchema = new Schema({
+  name: {type:String,required: true}
+});
 
 var BlogSchema = new Schema({
   name: {type:String,required: true},
   info: String,
   title:{type:String,required: true},
   created:{ type: Date, default: Date.now, required: true },
+  updated:{ type: Date, default: Date.now, required: true },
   content:String,
   active: { type: Boolean, default: 'true' },
   properties:[PropsSchema]
+  //lolo:[loloSchema]
 });
 
 

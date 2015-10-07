@@ -1,0 +1,44 @@
+<h1><code ng:non-bindable="">formSchema</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">flujorestApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="flujorestapp-directive-page flujorestapp-directive-formschema-page"><p>Crea un formulario completo al pasarle un schema desde mongodb
+<pre class="prettyprint linenums">
+formConfig = {
+     formTextContent:{
+       mainTitle:"Entrada de Blog",
+       submitBtn:"Enviar el formulario"
+     },
+     name:{
+       labelText:"Nombresillo",
+       requiredText:"Pon el campo oe",
+       order:1
+     }
+     properties:{
+       order:5,
+       titleArray:"Propiedades del documento",
+       addItemToArray:"Agrega una nueva propiedad",
+       deleteArrayItemBtn:"Borra esta propiedad",
+       name:{
+         labelText:"Nombre dentro de una propiedad",
+         requiredText:"No seay choclo",
+         order:1
+       }
+     }
+   };
+</pre>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;form-schema&gt;
+&lt;/form-schema&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY form-schema&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+</div>
+</div>

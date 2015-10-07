@@ -7,7 +7,7 @@ module.exports = function(config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine','jasmine-matchers'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -17,21 +17,30 @@ module.exports = function(config) {
       'client/bower_components/angular-resource/angular-resource.js',
       'client/bower_components/angular-cookies/angular-cookies.js',
       'client/bower_components/angular-sanitize/angular-sanitize.js',
-      'client/bower_components/angular-route/angular-route.js',
+      //'client/bower_components/angular-route/angular-route.js',
       'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'client/bower_components/lodash/dist/lodash.compat.js',
       'client/bower_components/angular-socket-io/socket.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/app/app.js',
-      'client/app/app.coffee',
+      //'client/app/app.coffee',
       'client/app/**/*.js',
-      'client/app/**/*.coffee',
+      //'client/app/**/*.coffee',
       'client/components/**/*.js',
-      'client/components/**/*.coffee',
-      'client/app/**/*.jade',
-      'client/components/**/*.jade',
+      //'client/components/**/*.coffee',
+      //'client/app/**/*.jade',
+      //'client/components/**/*.jade',
       'client/app/**/*.html',
-      'client/components/**/*.html'
+      'client/components/**/*.html',
+      'client/bower_components/textAngular/dist/textAngular.js',
+      'client/bower_components/textAngular/dist/textAngular-sanitize.js',
+      'client/bower_components/textAngular/dist/textAngularSetup.js',
+      'client/bower_components/rangy/rangy-core.js',
+      'client/bower_components/rangy/rangy-classapplier.js',
+      'client/bower_components/rangy/rangy-highlighter.js',
+      'client/bower_components/rangy/rangy-selectionsaverestore.js',
+      'client/bower_components/rangy/rangy-serializer.js',
+      'client/bower_components/rangy/rangy-textrange.js'
     ],
 
     preprocessors: {
@@ -48,7 +57,7 @@ module.exports = function(config) {
       stripPrefix: 'client/'
     },
 
-    
+
 
     // list of files / patterns to exclude
     exclude: [],
@@ -62,7 +71,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:

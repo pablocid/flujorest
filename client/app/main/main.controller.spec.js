@@ -2,7 +2,7 @@
 
 describe('Controller: MainCtrl', function () {
 
-  // load the controller's module
+/*  // load the controller's module
   beforeEach(module('flujorestApp'));
   beforeEach(module('socketMock'));
 
@@ -25,5 +25,5 @@ describe('Controller: MainCtrl', function () {
   it('should attach a list of things to the scope', function () {
     $httpBackend.flush();
     expect(scope.awesomeThings.length).toBe(4);
-  });
+  });*/
 });

@@ -5,31 +5,30 @@ angular.module('flujorestApp')
     return {
       templateUrl: 'app/directives/inputTextSchm/inputTextSchm.html',
       restrict: 'EA',
-      //require:"^form",
       scope:{
         schema:'='
       },
       link: function (scope, element, attrs) {
         function setInput(){
-          var label = element.find("label");
+          var label = element.find('label');
 
-          if(scope.schema.labelText){
-            label.text(scope.schema.labelText);
+          if(attrs.labelText){
+            label.text(attrs.labelText);
           }else{
             label.text(scope.schema.path);
           }
 
-          var input = element.find("input");
+          var input = element.find('input');
           var inputName = attrs.name || scope.schema.path;
-          input.attr("name",inputName);
-          input.attr("ng-model",attrs.model);
+          input.attr('name',inputName);
+          input.attr('ng-model',attrs.model);
 
           var p = element.find('p');
           if(scope.schema.isRequired && attrs.for){
-            input.attr("required",true);
-            p.attr("ng-show",attrs.for+"."+inputName+".$invalid && !"+attrs.for+"."+inputName+".$pristine");
-            if(scope.schema.requiredText){
-              p.text(scope.schema.requiredText);
+            input.attr('required',true);
+            p.attr('ng-show',attrs.for+'.'+inputName+'.$invalid && !'+attrs.for+'.'+inputName+'.$pristine');
+            if(attrs.requiredText){
+              p.text(attrs.requiredText);
             }
           }else{
             p.css('display','none');

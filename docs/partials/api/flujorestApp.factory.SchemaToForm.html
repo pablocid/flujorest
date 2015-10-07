@@ -1,0 +1,53 @@
+<h1><code ng:non-bindable="">SchemaToForm</code>
+<div><span class="hint">service in module <code ng:non-bindable="">flujorestApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="flujorestapp-factory-page flujorestapp-factory-schematoform-page"><p>Funciones necesarias para transformar un schema desde mongodb a un formulario en HTML.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_orderinputs">orderInputs(Schema)</h3>
+<div class="orderinputs"><div class="orderinputs-page"><p>Esta funcion ordena todos los objetos dentro de un array, utilizando la propiedad &quot;order&quot;</p>
+<p><strong>Funciones utilizadas dentro de este metodo</strong></p>
+<ul>
+<li>.forEach();</li>
+<li>_.sortBy();</li>
+</ul>
+</div><h5 id="methods_orderinputs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Schema</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="orderinputs-page"><p>Array of objects</p>
+</div></td></tr></tbody></table><h5 id="methods_orderinputs_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="orderinputs-page"><p>Array of objects</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_schematoarray">schemaToArray(Schema)</h3>
+<div class="schematoarray"><div class="schematoarray-page"><p>Transforma todos los key de primer nivel y el objeto que tiene la propiedad &quot;instance&quot;:&quot;Array&quot; en la ruta schema.paths -- enun array.
+Ademas, se eliminan todos los metodos que no tienen la propiedad &quot;instance&quot;.</p>
+<p><strong>Funciones utilizadas en este metodo</strong></p>
+<ul>
+<li>Object.key();</li>
+<li>.map();</li>
+<li>JSON.stringify();</li>
+<li>JSON.parse();</li>
+<li>.filter();</li>
+</ul>
+<p>Para limpiar el objeto y dejarlo en JSON:
+       <pre class="prettyprint linenums">
+       var cleanSchema = JSON.parse(JSON.stringify(schema));
+       </pre>
+</div><h5 id="methods_schematoarray_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Schema</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="schematoarray-page"><p>este parametro proviene del objeto Schema creado por mongoose</p>
+</div></td></tr></tbody></table><h5 id="methods_schematoarray_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="schematoarray-page"><p>Array of objects</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setattrs">setAttrs(Schema)</h3>
+<div class="setattrs"><div class="setattrs-page"><p>Esta función agrega la propiedad attrs a todos los objetos dentro del array. En el caso de los objetos
+con instance = &quot;Array&quot; realiza el mismo procedimiento pero en la ruta schema&gt;paths</p>
+<p><strong>Funciones utilizadas en este metodo</strong></p>
+<ul>
+<li>.map();</li>
+</ul>
+</div><h5 id="methods_setattrs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Schema</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="setattrs-page"><p>es el schema de mongodb pasado a un array por la funcion <a href="#/api/flujorestApp.directive:SchemaToForm#methods_schematoarray"><strong>schemaToArray</strong></a></p>
+</div></td></tr></tbody></table><h5 id="methods_setattrs_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="setattrs-page"><p>Array of objects</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>

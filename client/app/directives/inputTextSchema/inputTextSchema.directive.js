@@ -17,12 +17,12 @@ angular.module('flujorestApp')
         group.addClass('form-group');
 
         var label = angular.element('<label />');
-        label.text("Nombre");
-        label.attr("for","name");
+        label.text('Nombre');
+        label.attr('for','name');
 
         var input = angular.element('<input />');
         input.attr('type','text');
-        input.attr("name","name");
+        input.attr('name','name');
         input.attr('ng-model',model);
         input.addClass('form-control');
 
@@ -37,19 +37,16 @@ angular.module('flujorestApp')
         elementos.append(group);
 
         return {
-          pre:function(scope, element, attrs){
-
-          },
-          post: function (scope, element, attrs) {
+          post: function (scope) {
             if(scope.schema.isRequired){
               input.attr('required',true);
               $compile(input)(scope);
             }
-            var showWarning = formName+".name.$invalid && !"+formName+".name.$pristine";
+            var showWarning = formName+'.name.$invalid && !'+formName+'.name.$pristine';
             p.attr('ng-show',showWarning);
             $compile(p)(scope.$parent);
 
-            //var input = element.find("input");
+            //var input = element.find('input');
             //scope.name = scope.schema.path;
 
             /*
@@ -119,7 +116,7 @@ angular.module('flujorestApp')
 
              }*/
           }
-        }
+        };
       }
     };
   });
