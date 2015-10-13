@@ -57,11 +57,11 @@ angular.module('flujorestApp')
           };
         };
         var makeForm = compose(
-          SchemaToForm.compileToScope($compile,element, scope),
+          SchemaToForm.compileToScope($compile,element,scope),
           SchemaToForm.schmToForm(element),
           SchemaToForm.setInput(scope.htmlFuncs, element),
-          SchemaToForm.orderInputs(scope.config),
-          SchemaToForm.setAttrs,
+          //SchemaToForm.orderInputs(scope.config),
+          SchemaToForm.setAttrs(scope.config),
           SchemaToForm.schemaToArray
         );
         scope.schema.$promise.then(makeForm);

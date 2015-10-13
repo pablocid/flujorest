@@ -64,6 +64,7 @@ angular.module('flujorestApp')
         titleArray:'Propiedades del documento',
         addItemToArray:'Agrega una nueva propiedad',
         deleteArrayItemBtn:'Borra esta propiedad',
+        titleBlock:'Número de la propiedad',
         name:{
           labelText:'Nombre dentro de una propiedad',
           requiredText:'No seay choclo',
@@ -161,16 +162,19 @@ angular.module('flujorestApp')
 
     self.htmlFuncs =[
       {
+        parentPath:false,
         path:'content',
         instance:'String',
         func:setInputTextArea
       },
       {
+        parentPath:false,
         path:false,
         instance:'String',
         func:setInputText
       },
       {
+        parentPath:false,
         path:false,
         instance:'Date',
         func:setInputDate

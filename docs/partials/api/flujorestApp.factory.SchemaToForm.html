@@ -5,25 +5,63 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="flujorestapp-factory-page flujorestapp-factory-schematoform-page"><p>Funciones necesarias para transformar un schema desde mongodb a un formulario en HTML.</p>
+<p><strong>Proceso</strong></p>
+<ul>
+<li>Pasar el objeto Schema a array: <code>schemaToArray</code></li>
+<li>Agregar a cada uno de los paths la propiedad <code>attrs</code></li>
+<li>Agregar la propiedad <code>html</code> a los paths con el contenido html del input basado en la propiedad instance y el valor de path</li>
+<li>Agregar las propiedades <code>html</code> al elemento <code>form</code> en orden asignado por la propiedad <code>attrs.order</code></li>
+<li>Compilar el contentido con $compile()(scope);</li>
+</ul>
 </div></div>
 <div class="member method"><h2 id="methods">Methods</h2>
-<ul class="methods"><li><h3 id="methods_orderinputs">orderInputs(Schema)</h3>
-<div class="orderinputs"><div class="orderinputs-page"><p>Esta funcion ordena todos los objetos dentro de un array, utilizando la propiedad &quot;order&quot;</p>
+<ul class="methods"><li><h3 id="methods_orderinputs">orderInputs(Config, Schema)</h3>
+<div class="orderinputs"><div class="orderinputs-page"><p>Esta funcion ordena todos los objetos dentro de un array, utilizando la propiedad &quot;order&quot;.</p>
+<p><strong>Proceso</strong></p>
+<ul>
+<li>Toma un parámetro {Config} de primer nivel con el orden de los inputs</li>
+<li>Toma un parámetro [Schema] de segundo nivel con los paths</li>
+<li>Ordena los paths (<code>schema.paths</code>) dentro de los objeto con propiedad <code>instance: &#39;Array&#39;</code>. Utiliza propiedad <code>attrs.order: Number</code> para ordenar.</li>
+<li>Ordena los paths con la propiedad <code>attrs.order: Number</code></li>
+</ul>
 <p><strong>Funciones utilizadas dentro de este metodo</strong></p>
 <ul>
 <li>.forEach();</li>
-<li>_.sortBy();</li>
+<li><p>_.sortBy();</p>
+<p><strong>Forma de la función</strong>
+<pre class="prettyprint linenums">
+     function({Config}){
+       return function([Schema]){
+         return [];
+       }
+     }
+ </pre>
+</li>
 </ul>
-</div><h5 id="methods_orderinputs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Schema</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="orderinputs-page"><p>Array of objects</p>
+</div><h5 id="methods_orderinputs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Config</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="orderinputs-page"><p>Objeto con paths.order;</p>
+</div></td></tr><tr><td>Schema</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="orderinputs-page"><p>Array of objects</p>
 </div></td></tr></tbody></table><h5 id="methods_orderinputs_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="orderinputs-page"><p>Array of objects</p>
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_schematoarray">schemaToArray(Schema)</h3>
 <div class="schematoarray"><div class="schematoarray-page"><p>Transforma todos los key de primer nivel y el objeto que tiene la propiedad &quot;instance&quot;:&quot;Array&quot; en la ruta schema.paths -- enun array.
-Ademas, se eliminan todos los metodos que no tienen la propiedad &quot;instance&quot;.</p>
+Ademas, se eliminan todos los objetos que no tienen la propiedad &quot;instance&quot;.</p>
+<p><strong>Proceso</strong></p>
+<ul>
+<li>Limpiar el objeto Schema (con <code>cleanSchema</code> - más abajo)</li>
+<li>Pasar los valores del objeto a un array (<code>_.values()</code>)</li>
+<li>Filtrar a todos los objetos que no tengan la propiedad <code>instance</code></li>
+<li>Pasar valores del objeto a un array de la propiedad <code>schema.paths</code> presente en los objetos con propiedad <code>instance: &#39;Array&#39;</code></li>
+</ul>
+<p><strong>Función</strong>
+ <pre class="prettyprint linenums">
+     function({Schema}){
+       return [Schema];
+     }
+ </pre>
 <p><strong>Funciones utilizadas en este metodo</strong></p>
 <ul>
-<li>Object.key();</li>
+<li>_.values; // parte de la librería lodash</li>
 <li>.map();</li>
 <li>JSON.stringify();</li>
 <li>JSON.parse();</li>
@@ -38,14 +76,113 @@ Ademas, se eliminan todos los metodos que no tienen la propiedad &quot;instance&
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_setattrs">setAttrs(Schema)</h3>
-<div class="setattrs"><div class="setattrs-page"><p>Esta función agrega la propiedad attrs a todos los objetos dentro del array. En el caso de los objetos
-con instance = &quot;Array&quot; realiza el mismo procedimiento pero en la ruta schema&gt;paths</p>
-<p><strong>Funciones utilizadas en este metodo</strong></p>
+<div class="setattrs"><div class="setattrs-page"><p>Esta función agrega la propiedad <code>attrs</code> a todos los objetos dentro del array. En el caso de los objetos
+con <code>instance:&#39;Array&#39;</code> realiza el mismo procedimiento pero en la ruta <code>schema.paths</code>.</p>
+<h5 id="methods_setattrs_el-contenido-de-la-propiedad-son">El contenido de la propiedad son:</h5>
+<ul>
+<li>schema: &#39;String&#39;; path de mongodb</li>
+<li>model: &#39;String&#39;; es la variable  <em>scope.model</em> con la ruta específica que
+corresponde al nombre del path</li>
+<li>for: &#39;String&#39;; el <em>name</em> del formulario</li>
+<li>name: &#39;String&#39;; el nombre del input</li>
+<li>label-text: &#39;String&#39;; la etiqueta del input</li>
+<li>required-text:&#39;String&#39;; el texto que se despliega cuando el input es requerido</li>
+</ul>
+<p><strong>Nota:</strong> En el caso de la propiedad name de los schema.paths dentro del array, su valor
+&#39;Strings&#39; deben ser compiladas ($compile) para que sea evaluada la variable k utilizada en el ng-repeat.</p>
+<p><strong>Depende de:</strong></p>
+<ul>
+<li>la variable de configuración se llame <code>config</code> y de su estructura</li>
+<li>la variable del modelo se llame <code>model</code></li>
+<li>el formulario se llame <code>formrandom</code></li>
+</ul>
+<p><strong> Estructura del objeto <code>config[path]</code></strong>: Este se debe definir dentro del controlador que utilice la directiva
+<pre class="prettyprint linenums">
+
+        Config.name = {
+          labelText:'El Nombre',
+          requiredText:'Pon el campo oe',
+          order:1
+        };
+
+        Config.arrayPath = {
+          labelText:'Las propiedades',
+          requiredText:'Pon el campo oe',
+          order:5,
+          titleArray:'Propiedades del documento',
+          addItemToArray:'Agrega una nueva propiedad',
+          deleteArrayItemBtn:'Borra esta propiedad',
+          path:{
+            labelText:'Nombre dentro de una propiedad',
+            requiredText:'No seay choclo',
+            order:1
+          }
+        }
+</pre>
+<p><strong> Ejemplo de un path </strong>
+<pre class="prettyprint linenums">
+    {
+       instance: 'String',
+       path: 'name',
+       attrs:{
+           schema:'schema.name',
+           model:'model.name',
+           for:'formulario',
+           name:'name',
+           label-text:'{{config.name.labelText}}',
+           requierd-text:'{{config.name.requiredText}}',
+           order:'{{config.name.order}}'
+       },
+       ...
+    }
+</pre>
+<p> <strong>Funciones utilizadas</strong></p>
 <ul>
 <li>.map();</li>
 </ul>
 </div><h5 id="methods_setattrs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Schema</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="setattrs-page"><p>es el schema de mongodb pasado a un array por la funcion <a href="#/api/flujorestApp.directive:SchemaToForm#methods_schematoarray"><strong>schemaToArray</strong></a></p>
 </div></td></tr></tbody></table><h5 id="methods_setattrs_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="setattrs-page"><p>Array of objects</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setinput">setInput(ArrayFunc, element)</h3>
+<div class="setinput"><div class="setinput-page"><p>Funcion que recibe funciones en un array para pasar una determinada instancia/path del schema a html</p>
+<h5 id="methods_setinput_estructura-arrayfunc">Estructura ArrayFunc</h5>
+<pre class="prettyprint linenums">
+    [
+       {
+         path:'',
+         instance:'',
+         parentPath:'',
+         func:function(){}
+       }
+    ]
+</pre>
+<h5 id="methods_setinput_elementos-del-templateurl-utilizados-en-esta-sección-accesibles-a-traves-del-argumento-element">Elementos del templateUrl utilizados en esta sección accesibles a traves del argumento &#39;element&#39;.</h5>
+<ul>
+<li>#array: encierra a los elementos que se encuentran dentro de un array<ul>
+<li>#titlearray: Es el título general de la instance:&#39;Array&#39;</li>
+<li>#arrayblock: Bloque que se repite según las propiedades que existan o que se creen<ul>
+<li>#titleblock: Título del bloque</li>
+<li>#inputblock: Lugar donde va inserto el input</li>
+<li>#deleteblock: Botón que elimina un item</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>#addproperty: Boton que agrega una propiedad</li>
+</ul>
+<p><strong>Proceso</strong></p>
+<ul>
+<li>Pasa los argumentos ArrayFunc y element a la function primaria</li>
+<li>Pasa el schema array a la función secundaria</li>
+<li><p>Match entre elementos de ArrayFunc y Schema a través de <code>instance/path</code></p>
+<p>TODO: Hacer input por defecto</p>
+</li>
+</ul>
+</div><h5 id="methods_setinput_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ArrayFunc</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="setinput-page"><p>esta compuesto de objetos con una estructura determinada</p>
+</div></td></tr><tr><td>element</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setinput-page"><p>DOM element. La función principal es utilizar algunos elementos desde el template
+para aplicar formatos a todos los elementos, sobre todo a los de instancia array.</p>
+</div></td></tr></tbody></table><h5 id="methods_setinput_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="setinput-page"><p>funcion que toma el schema array</p>
 </div></td></tr></table></div>
 </li>
 </ul>

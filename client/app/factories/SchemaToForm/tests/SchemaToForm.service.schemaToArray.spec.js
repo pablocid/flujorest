@@ -31,6 +31,7 @@ describe('Service: SchemaToForm.schemaToArray', function () {
         expect(inst).toBe(1);
       });
     });
+
     describe('Si existe una instance "Array" la ruta schema.paths: ', function () {
       var arrayInstances;
       beforeEach(function () {
