@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/iframe/iframe.socket').register(socket);
   require('../api/TextContent/TextContent.socket').register(socket);
   require('../api/blog/blog.socket').register(socket);
   require('../api/flora/flora.socket').register(socket);
