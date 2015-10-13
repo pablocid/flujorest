@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('flujorestApp')
+angular.module('iframeApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {
