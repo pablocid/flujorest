@@ -493,11 +493,13 @@ angular.module('flujorestApp')
           formTitle
             .text('{{ config.formTextContent.mainTitle ||"Nuevo titulo"}}');
 
+          var disabled = 'formrandom.$invalid';
           submitBtn
             .attr({
               'type':'submit',
               'name':'submiting',
               'value':'submit',
+              'ng-disabled':disabled
             })
             .text('{{config.formTextContent.submitBtn || "Send form"}}');
 
