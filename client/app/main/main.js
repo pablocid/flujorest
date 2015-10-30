@@ -6,10 +6,7 @@ angular.module('flujorestApp')
       .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        controllerAs:'mainCtrl'
       });
   });
-//hoola
-//askjdasf
-// aklsdjfklasj
-// slkdjfslka
