@@ -463,8 +463,8 @@ angular.module('flujorestApp')
        * @ngdoc method
        * @name schmToForm
        * @methodOf flujorestApp.factory:SchemaToForm
-       * @param element
-       * @returns {Function}
+       * @param {Object} element elemento a insertar
+       * @returns {Function} function fundiooijasdfi alisdjfla ias dfo
        * @description
        * Esta función recibe como argumento de primer nivel el objeto DOM 'element' donde se encuentra el template del formulario.
        *
