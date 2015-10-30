@@ -2,13 +2,14 @@
 
 var _ = require('lodash');
 var Flora = require('./flora.model');
+var q = require('q');
 
 // Get list of floras
 exports.index = function(req, res) {
   Flora.find(function (err, floras) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(floras);
-  });
+  }).limit(1);
 };
 
 // Get a single flora
@@ -52,6 +53,36 @@ exports.destroy = function(req, res) {
       return res.status(204).send('No Content');
     });
   });
+};
+
+//pagination flora
+exports.pagination = function(req, res) {
+  var items = req.params.items;
+  var page = req.params.page;
+  var type = req.params.type;
+  var find = {};
+  if(type==='cultivated'){find={'type.id':1}; }
+  if(type==='transgenic'){find={'type.id':4}; }
+  if(type==='introduced'){find={'type.id':2}; }
+  if(type==='native'){find={'type.id':3}; }
+
+  q.all(
+    [
+      Flora.find(find).count().exec(),
+      Flora.find(find).sort('name').skip(items*(page-1)).limit(items).exec()
+    ])
+    .spread(function(count,currPageCont){
+      //console.log(count);
+      var respuesta = {
+        totalItems:count,
+        items:items,
+        totalPages:Math.ceil(count/items),
+        currentPage:page,
+        flora:currPageCont
+      };
+      res.status(200).json(respuesta);
+    })
+    .fail(function(err){ console.log(err);});
 };
 
 function handleError(res, err) {
