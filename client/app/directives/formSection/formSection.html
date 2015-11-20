@@ -1,0 +1,51 @@
+<form novalidate name="myForm">
+  <div id="main" class="form-group">
+    <label for="">ID de la sección (ej: users, blog, clientes, productos, ensayo_planta12112015)</label>
+    <input class="form-control" name="main" type="text"/>
+  </div>
+  <div id="description" class="form-group">
+    <label for="">Descripción de la sección</label>
+    <input class="form-control" name="description" type="text"/>
+  </div>
+  <div id="inputs" class="form-group well">
+    <div id="inputMainSelect" class="form-group" >
+      <label for="">type</label>
+      <select class="form-control">
+        <option value="">--</option>
+      </select>
+    </div>
+    <div id="inputMain" class="form-group">
+      <label for="">ID</label>
+      <input type="text" class="form-control">
+    </div>
+    <div id="inputName" class="form-group" >
+      <label for="">name</label>
+      <input class="form-control danger" type="text"/>
+
+    </div>
+    <div id="inputDesc" class="form-group" >
+      <label for="">description</label>
+      <input  class="form-control" type="text"/>
+    </div>
+    <div id="inputLabel" class="form-group" >
+      <label for="">label</label>
+      <input class="form-control" type="text"/>
+    </div>
+    <div id="inputRequired" class="form-group" >
+      <label for="">required</label>
+      <input class="form-control" type="checkbox"/>
+    </div>
+    <div id="inputOptionList" class="form-group" >
+      <label for="">optionList</label>
+      <input  class="form-control" type="text"/>
+    </div>
+    <div id="addInputBtn" class="form-group" style="padding: 20px">
+      <button class="btn" >Add</button>
+    </div>
+  </div>
+  <div id="submitBtn" class="form-group">
+    <button class="btn btn-primary">Guardar</button>
+  </div>
+</form>
+
+ng-class="{disabled:myForm.$invalid}"

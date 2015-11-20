@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <h1>Inputs Entry</h1>
+  <h3>Nuevo registro</h3>
+
+  <form action="">
+    <label for="">Sección <b>[{{inputCtrl.newReg.section}}]</b></label><br/>
+    <label for="">Nombre del input</label>
+    <input type="text" ng-model="inputCtrl.newReg.properties[0].string" ng-init="inputCtrl.newReg.properties[0].id='main' "/>
+    <label for="">Descripción</label>
+    <input type="text" ng-model="inputCtrl.newReg.properties[1].string" ng-init="inputCtrl.newReg.properties[1].id='description'"/>
+    <label for="">Etiqueta del input</label>
+    <input type="text" ng-model="inputCtrl.newReg.properties[2].string" ng-init="inputCtrl.newReg.properties[2].id='label'"/>
+    <label for="">Tipo de dato a ingresar</label>
+    <select name="" id="" ng-model="inputCtrl.newReg.properties[3].string" ng-init="inputCtrl.newReg.properties[3].id='type'">
+      <option value="text">Texto</option>
+      <option value="boolean">Verdadero o falso</option>
+      <option value="number">Número</option>
+      <option value="date">Fecha</option>
+      <option value="array">Lista</option>
+    </select>
+    <label for="">Lista de opciones</label>
+    <input type="text" ng-model="inputCtrl.getset.theArray" ng-model-options="{ getterSetter: true }" />
+    <label for="">Es un campo obligatorio?</label>
+    <input type="checkbox" value="false" ng-model="inputCtrl.newReg.properties[4].boolean" ng-init="inputCtrl.newReg.properties[4].id='required'"/>
+  </form>
+  <pre>list = <span ng-bind="inputCtrl.getset.theArray()"></span></pre>
+  {{inputCtrl.newReg}}
+  <br/>
+  <button ng-click="inputCtrl.save()">SAVE</button>
+  <div class="well">
+    <ul>
+      <li ng-repeat="item in inputCtrl.query">
+        <b>{{item.section}}</b>: [<br/>
+          <span ng-repeat="it in item.properties">
+            {{it}},<br/>
+          </span>
+        ]
+      </li>
+    </ul>
+  </div>
+</div>

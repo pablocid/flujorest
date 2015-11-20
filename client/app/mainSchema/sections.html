@@ -1,0 +1,42 @@
+<div class="col-md-12">
+  <h1>Sections Entry</h1>
+  <h3>Nuevo registro</h3>
+
+  <form action="">
+    <label for="">Sección <b ng-init="secCtrl.newReg.section='section' ">[ section ]</b></label><br/>
+
+    <label for="">Nombre de la sección</label>
+    <input type="text" checked ng-model="secCtrl.newReg.properties[0].string" ng-init="secCtrl.newReg.properties[0].id='main'"/>
+
+    <label for="">Descripción de la sección</label>
+    <input type="text" checked ng-model="secCtrl.newReg.properties[1].string" ng-init="secCtrl.newReg.properties[1].id='description'"/>
+
+    <label for="">Descripción de la sección</label>
+    <input type="text" checked ng-model="secCtrl.newReg.properties[1].string" ng-init="secCtrl.newReg.properties[1].id='description'"/>
+
+    <label for="">Relación con otras secciónes</label>
+    <input type="text" value="adfjalskdfjlkasdjflk" checked ng-model="secCtrl.newReg.relations"/>
+    <label for="">Taxonomy</label>
+    <input type="text" value="adfjalskdfjlkasdjflk" checked ng-model="secCtrl.newReg.taxonomy"/>
+    <label for="">Status</label>
+    <input type="checkbox" value="adfjalskdfjlkasdjflk" checked ng-model="secCtrl.newReg.status"/>
+  </form>
+  <div class="well">
+    {{secCtrl.properties}}
+  </div>
+  {{secCtrl.newReg}}
+  <br/>
+  <button ng-click="secCtrl.save()">SAVE</button>
+  <div class="well">
+    <ul>
+      <li ng-repeat="item in secCtrl.query">
+        <b>{{item.properties}}</b>:
+        <!--[
+          <span ng-repeat="it in item.properties">
+            <b>{{it.id}}</b>: {{it.string}} ||
+          </span>
+        ]-->
+      </li>
+    </ul>
+  </div>
+</div>

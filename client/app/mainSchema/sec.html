@@ -1,0 +1,17 @@
+<h1>La Sección: {{secCtrl.current}}</h1>
+
+
+<table>
+  <tr style="border: 2px solid black; padding:5px">
+    <td style="border: 2px solid black; padding:5px">ID</td>
+    <td style="border: 2px solid black; padding:5px" ng-repeat="prop in secCtrl.items[0].properties">{{prop.id}}</td>
+  </tr>
+  <tr style="border: 2px solid black; padding:5px" ng-repeat="item in secCtrl.items">
+    <td style="border: 2px solid black; padding:5px">{{item._id}}</td>
+    <td style="border: 2px solid black; padding:5px" ng-repeat="prop in item.properties">{{prop.string || prop.array.toString()}}</td>
+  </tr>
+</table>
+<br/>
+<div class="well"><!--{{secCtrl.items}}-->{{secCtrl.mainS}}</div>
+
+

@@ -36,7 +36,7 @@ angular.module('flujorestApp')
 
     self.formConfig = {
       formTextContent:{
-        mainTitle:'Entrada de Blog',
+        mainTitle:'Crea una sección',
         submitBtn:'Enviar el formulario'
       },
       name:{
@@ -82,9 +82,6 @@ angular.module('flujorestApp')
         }
       }
     };
-
-
-
 
     Blog.schema(function(a){
       self.schemaTitle = a.title;

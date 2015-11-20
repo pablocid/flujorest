@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <h1>Blog Entry</h1>
+  <h3>Nuevo registro</h3>
+
+  <form action="">
+    <label for="">Sección <b ng-init="msCtrl.newReg.section='blog' ">[ blog ]</b></label><br/>
+    <label for="" ng-init="msCtrl.newReg.taxonomy=[]">Taxonomy</label>
+    <input type="text" ng-model="msCtrl.newReg.taxonomy[0]"/>
+    <div ng-repeat="prop in msCtrl.props" ng-init="msCtrl.newReg.properties[$index].id=prop.id">
+      <label for="">{{prop.label}}</label>
+      <input type="{{prop.type}}" ng-model="msCtrl.newReg.properties[$index][prop.field]"/>
+    </div>
+    <label for="">Status</label>
+    <input type="checkbox" value="adfjalskdfjlkasdjflk" checked ng-model="msCtrl.newReg.status"/>
+  </form>
+
+  {{msCtrl.newReg}}
+  <br/>
+<button ng-click="msCtrl.save()">SAVE</button>
+  <div class="well">
+    <ul>
+      <li ng-repeat="item in msCtrl.query">
+        <b>{{item.section}}</b>: [
+          <span ng-repeat="it in item.properties">
+            <b>{{it.id}}</b>: {{it.string}} ||
+          </span>
+          <b>taxonomy</b>: {{item.taxonomy}}
+        ]
+      </li>
+    </ul>
+  </div>
+</div>
